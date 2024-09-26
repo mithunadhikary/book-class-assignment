@@ -8,28 +8,54 @@ void main() {
     pagesRead: 10,
   );
 
+  Book bookObjTwo = Book(
+    title: 'Dart Programming With Rafat Bhai',
+    author: 'Rafat Bhai',
+    publicationYear: 2019,
+    pagesRead: 10,
+  );
+
+  Book bookObjThree = Book(
+    title: 'Dart Programming With Rabbil Bhai',
+    author: 'Rabbil Bhai',
+    publicationYear: 2018,
+    pagesRead: 10,
+  );
+
   // Adds the pageRead property
   bookObj.read(30);
+  bookObjTwo.read(35);
+  bookObjThree.read(40);
 
-  // Getting the total page red
-  int totalPageRead = bookObj.getPagesRead();
-  print('Total pages read: $totalPageRead');
+  // Print the details of first book
+  print('\nFirst Book Details:');
+  print('.............................');
+  print('Title: ${bookObj.getTitle()}');
+  print('Author: ${bookObj.getAuthor()}');
+  print('Publication Year: ${bookObj.getPublicationYear()}');
+  print('Pages Read: ${bookObj.getPagesRead()}');
+  print('Book Age: ${bookObj.getBookAge()} years');
 
-  // Showing the title property
-  String bookTitle = bookObj.getTitle();
-  print('The Book Title is: $bookTitle');
+  // Print the details of second book
+  print('\nSecond Book Details:');
+  print('.............................');
+  print('Title: ${bookObjTwo.getTitle()}');
+  print('Author: ${bookObjTwo.getAuthor()}');
+  print('Publication Year: ${bookObjTwo.getPublicationYear()}');
+  print('Pages Read: ${bookObjTwo.getPagesRead()}');
+  print('Book Age: ${bookObjTwo.getBookAge()} years');
 
-  // Showing the author property
-  String bookAuthor = bookObj.getAuthor();
-  print('The Book Author is: $bookAuthor');
+  // Print the details of third book
+  print('\nThird Book Details:');
+  print('.............................');
+  print('Title: ${bookObjThree.getTitle()}');
+  print('Author: ${bookObjThree.getAuthor()}');
+  print('Publication Year: ${bookObjThree.getPublicationYear()}');
+  print('Pages Read: ${bookObjThree.getPagesRead()}');
+  print('Book Age: ${bookObjThree.getBookAge()} years');
 
-  // Showing the publication Year
-  int bookPublicationYear = bookObj.getPublicationYear();
-  print('The Book Publication Year is: $bookPublicationYear');
-
-  // Showing the age of this book
-  int bookAge = bookObj.getBookAge();
-  print('The book is $bookAge years old.');
+  // Showing the total Numbers of book
+  print('\nTotal number of books created: ${Book.getTotalBooks()}');
 
 }
 
@@ -39,6 +65,8 @@ class Book {
   int publicationYear;
   int pagesRead;
 
+  static int totalBooks = 0;
+
   Book({
     required this .title,
     required this.author,
@@ -46,6 +74,7 @@ class Book {
     required this.pagesRead
   }) {
     // Something
+    totalBooks++;
   }
 
   int read(int pages) {
@@ -75,6 +104,10 @@ class Book {
   int getBookAge() {
     int currentYear = DateTime.now().year;
     return currentYear - publicationYear;
+  }
+
+  static int getTotalBooks() {
+    return totalBooks;
   }
 
 }
